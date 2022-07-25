@@ -55,6 +55,11 @@ Send a POST request. The value of the data input is encoded with a AES-128 mecha
 }
 ```
 
+#### Return customer to store
+
+When a customer is finished making their payment for an order, pixxles return them back to the store.
+
+`returnUrl` is a field provided in a request. Its value is a destination, where your store should return the customer to after the payment process is complete.
 
 ## Files' descriptions
 

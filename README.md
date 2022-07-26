@@ -63,4 +63,21 @@ When a customer is finished making their payment for an order, pixxles return th
 
 ## Files' descriptions
 
-- `Hosted/model.json` – request model
+- `Hosted/model.json` – Payment request
+
+### Sale Transaction (with 3-D Secure) Direct 
+
+The Direct Integration works by allowing you to keep the Customer on your system throughout the checkout process, collecting the Customer’s payment details on your own secure server before sending the collected data to our Gateway for processing. This allows you to provide a smoother, more complete checkout process to the Customer.  
+In addition to basic sales processing, the Direct Integration can be used to perform other actions such as refunds and cancellations, which can provide a more advanced integration with our Gateway.
+
+![Untitled Diagram drawio (2)](https://user-images.githubusercontent.com/72015387/180981113-2dad9ffa-f365-4831-bbbd-64a942d3d5b8.png)
+
+## Files' descriptions
+
+- `Direct/TransactionCreateRequest.json` – Payment request
+- `Direct/TransactionResponse.json` – Payment response
+- `Direct/3DSTester.php` –  Payment request 1
+- `Direct/3DSv2-test-101.php` – Payment request 2
+- `Direct/step1.html` –  ACS request 1
+- `Direct/step2.html` – ACS request 2
+

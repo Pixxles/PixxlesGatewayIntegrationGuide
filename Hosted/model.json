@@ -1,0 +1,39 @@
+{
+  "storeId": 1000,
+  "lang": "en",
+  "returnUrl": "https://test.store.com/custompayment/1000?orderId=XJ12H",
+  "merchantSettings": {
+    "merchantId": 12345678
+  },
+  "cart": {
+    "currency": "USD",
+    "order": {
+      "id": "XJ12H",
+      "totalAmount": 10.10,
+      "paymentModule": "",
+      "paymentMethod": "Credit or debit card (Mollie)",
+      "ipAddress": "195.151.247.241",
+      "orderComments": "comment",
+      "customerId": 123123123,
+      "globalReferer": "https://test.store.com/",
+      "billingPerson": {
+        "name": "",
+        "companyName": "",
+        "street": "",
+        "city": "",
+        "countryCode": "",
+        "countryName": "",
+        "postalCode": "",
+        "stateOrProvinceCode": "",
+        "stateOrProvinceName": "",
+        "email": "t",
+        "phone": ""
+      },
+      "additionalInfo": {
+        "some_description": "123123"
+      },
+      "referenceTransactionId": "transaction_1234567890"
+    }
+  },
+  "token": "abcdefghijklmnopqrstuv1234567890"
+}

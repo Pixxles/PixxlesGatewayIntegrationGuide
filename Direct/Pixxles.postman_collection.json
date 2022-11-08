@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "SALE Transaction",
+			"name": "SALE Transaction Request - Initial",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -218,7 +218,50 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "SALE Transaction Response - Initial",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"__wafRequestID\": \"2022-11-07T23:20:13Z|7d2f9fe709|185.16.138.249|ylF2PEWNTB\",\r\n    \"action\": \"SALE\",\r\n    \"addressCheckPref\": \"matched\",\r\n    \"amount\": \"200\",\r\n    \"amountRetained\": \"0\",\r\n    \"avscv2CheckEnabled\": \"Y\",\r\n    \"caEnabled\": \"N\",\r\n    \"cardCVVMandatory\": \"Y\",\r\n    \"cardExpiryDate\": \"1222\",\r\n    \"cardExpiryMonth\": \"12\",\r\n    \"cardExpiryYear\": \"22\",\r\n    \"cardFlags\": \"71237632\",\r\n    \"cardIssuer\": \"BARCLAYS BANK UK PLC\",\r\n    \"cardIssuerCountry\": \"United Kingdom\",\r\n    \"cardIssuerCountryCode\": \"GBR\",\r\n    \"cardNumberMask\": \"492942******0821\",\r\n    \"cardNumberValid\": \"Y\",\r\n    \"cardScheme\": \"Visa\",\r\n    \"cardSchemeCode\": \"VC\",\r\n    \"cardType\": \"Visa Credit\",\r\n    \"cardTypeCode\": \"VC\",\r\n    \"cftEnabled\": \"N\",\r\n    \"countryCode\": \"826\",\r\n    \"currencyCode\": \"826\",\r\n    \"currencyExponent\": \"2\",\r\n    \"customerAddress\": \"Flat 6 Primrose Rise 347 Lavender Road Northampton GB\",\r\n    \"customerCountryCode\": \"GB\",\r\n    \"customerEmail\": \"test@test.com\",\r\n    \"customerName\": \"John Smith\",\r\n    \"customerPhone\": \"+442081264154\",\r\n    \"customerPostCode\": \"NN17 8YG\",\r\n    \"customerPostcode\": \"NN17 8YG\",\r\n    \"customerReceiptsRequired\": \"N\",\r\n    \"customerTown\": \"Northampton\",\r\n    \"cv2CheckPref\": \"matched\",\r\n    \"deviceAcceptContent\": \"*/*\",\r\n    \"deviceAcceptEncoding\": \"gzip, deflate, br\",\r\n    \"deviceAcceptLanguage\": \"en-US\",\r\n    \"deviceCapabilities\": \"javascript\",\r\n    \"deviceChannel\": \"browser\",\r\n    \"deviceIdentity\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36\",\r\n    \"deviceScreenResolution\": \"2752x1152x24\",\r\n    \"deviceTimeZone\": \"-120\",\r\n    \"eReceiptsEnabled\": \"N\",\r\n    \"facilitatorID\": \"10084515\",\r\n    \"facilitatorName\": \"PIX\",\r\n    \"initiator\": \"consumer\",\r\n    \"merchantCategoryCode\": \"5965\",\r\n    \"merchantCity\": \"London\",\r\n    \"merchantID\": \"132779\",\r\n    \"merchantName\": \"Pixxles - 3DS\",\r\n    \"notifyEmailRequired\": \"Y\",\r\n    \"orderRef\": \"15\",\r\n    \"paymentMethod\": \"card\",\r\n    \"postcodeCheckPref\": \"matched\",\r\n    \"processMerchantID\": \"132779\",\r\n    \"processorType\": \"acquirer\",\r\n    \"remoteAddress\": \"20.61.129.8\",\r\n    \"requestID\": \"636992ad0b96f\",\r\n    \"requestMerchantID\": \"132779\",\r\n    \"requestorChallengeIndicator\": \"04\",\r\n    \"responseCode\": \"65802\",\r\n    \"responseMessage\": \"3DS authentication required\",\r\n    \"responseStatus\": \"2\",\r\n    \"riskCheckEnabled\": \"N\",\r\n    \"rtsEnabled\": \"Y\",\r\n    \"signature\": \"a7218ab58d3ce80ec0b936b375b19d896b0a07198cd10aaae0a1000bdf91753e7089bdcf6ee0c9a2dbf13893c2c53b398ef9162b4809e0267c058c476e737905\",\r\n    \"state\": \"received\",\r\n    \"subMerchantID\": \"262960000011819\",\r\n    \"surchargeEnabled\": \"N\",\r\n    \"threeDSCheck\": \"not checked\",\r\n    \"threeDSCheckPref\": \"authenticated\",\r\n    \"threeDSDetails[acquirerCountryCode]\": \"826\",\r\n    \"threeDSDetails[fallback]\": \"N\",\r\n    \"threeDSDetails[issuerCountryCode]\": \"826\",\r\n    \"threeDSDetails[psd2Region]\": \"Y\",\r\n    \"threeDSDetails[transID]\": \"422751f0-f909-496a-bfe3-f25d111aff0a\",\r\n    \"threeDSDetails[version]\": \"2.1.0\",\r\n    \"threeDSDetails[versions]\": \"2.1.0\",\r\n    \"threeDSEnabled\": \"Y\",\r\n    \"threeDSEnrolled\": \"Y\",\r\n    \"threeDSPolicy\": \"1\",\r\n    \"threeDSRedirectURL\": \"http://localhost/wordpress/?wc-api=wc_creditordebitcard\",\r\n    \"threeDSRef\": \"UDNLRVk6dHJhbnNhY3Rpb25JRD0yMDIzNjE0NjAmbWVyY2hhbnRJRD0xMzI3NzkmX19saWZlX189MTY2Nzg2NTAxMw==\",\r\n    \"threeDSRequest[threeDSMethodData]\": \"eyJ0aHJlZURTTWV0aG9kTm90aWZpY2F0aW9uVVJMIjoiaHR0cDovL2xvY2FsaG9zdC93b3JkcHJlc3MvP3djLWFwaT13Y19jcmVkaXRvcmRlYml0Y2FyZCZ0aHJlZURTQWNzUmVzcG9uc2U9bWV0aG9kIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiI0MjI3NTFmMC1mOTA5LTQ5NmEtYmZlMy1mMjVkMTExYWZmMGEifQ\",\r\n    \"threeDSResponseCode\": \"65802\",\r\n    \"threeDSResponseMessage\": \"3DS authentication required\",\r\n    \"threeDSURL\": \"https://acs.3ds-pit.com/?method\",\r\n    \"threeDSVETimestamp\": \"2022-11-07 23:20:13\",\r\n    \"threeDSVersion\": \"2.1.0\",\r\n    \"threeDSXID\": \"422751f0-f909-496a-bfe3-f25d111aff0a\",\r\n    \"timestamp\": \"2022-11-07 23:20:13\",\r\n    \"transactionID\": \"202361460\",\r\n    \"transactionUnique\": \"wc_order_BCJ725d5WNqFl-636992a67f02e\",\r\n    \"type\": \"1\",\r\n    \"vcsResponseCode\": \"0\",\r\n    \"vcsResponseMessage\": \"Success - no velocity check rules applied\",\r\n    \"walletEnabled\": \"Y\",\r\n    \"walletRequired\": \"Y\",\r\n    \"walletStore\": \"Y\",\r\n    \"xref\": \"22110723XY20RN13LH76KJG\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+							"protocol": "https",
+							"host": [
+								"qa-transactions",
+								"pixxlesportal",
+								"com"
+							],
+							"path": [
+								"api",
+								"Transactions",
+								"payment",
+								"direct"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	]
 }

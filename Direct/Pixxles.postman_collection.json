@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "935f6e30-a002-45de-8a8d-b70fae3af1ec",
+		"_postman_id": "b05eaf2f-a9db-4484-86af-9b74e95bd2c0",
 		"name": "Pixxles",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11334039"
+		"_exporter_id": "6382408"
 	},
 	"item": [
 		{
@@ -256,12 +256,167 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
+		},
+		{
+			"name": "QUERY Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "action",
+							"value": "QUERY",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "132779",
+							"type": "text"
+						},
+						{
+							"key": "xref",
+							"value": "22110723XY20RN13LH76KJG",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "signature_here",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
+					"host": [
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
+					],
+					"path": [
+						"api",
+						"Transactions",
+						"payment",
+						"direct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CANCEL Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "action",
+							"value": "CANCEL",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "132779",
+							"type": "text"
+						},
+						{
+							"key": "xref",
+							"value": "22110723XY20RN13LH76KJG",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "signature_here",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
+					"host": [
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
+					],
+					"path": [
+						"api",
+						"Transactions",
+						"payment",
+						"direct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REFUND Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "action",
+							"value": "REFUND_SALE",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "132779",
+							"type": "text"
+						},
+						{
+							"key": "xref",
+							"value": "22110723XY20RN13LH76KJG",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "signature_here",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "orderRef",
+							"value": "reason",
+							"description": "Reason",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
+					"host": [
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
+					],
+					"path": [
+						"api",
+						"Transactions",
+						"payment",
+						"direct"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

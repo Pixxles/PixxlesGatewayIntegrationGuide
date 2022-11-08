@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "ba456c03-1ecd-46a2-b7b0-36836837a347",
+		"_postman_id": "935f6e30-a002-45de-8a8d-b70fae3af1ec",
 		"name": "Pixxles",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "6382408"
+		"_exporter_id": "11334039"
 	},
 	"item": [
 		{
-			"name": "http://localhost:5000/api/Transactions/payment/direct",
+			"name": "SALE Transaction",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -17,162 +17,199 @@
 						{
 							"key": "action",
 							"value": "SALE",
+							"description": "Text (128), required; accepted values: SALE, REFUND_SALE, CANCEL",
 							"type": "text"
 						},
 						{
 							"key": "amount",
-							"value": "100",
+							"value": "10025",
+							"description": "Text (20), required; transaction amount, the last two digits are always decimal places, in this example it is 100.25",
 							"type": "text"
 						},
 						{
 							"key": "cardCVV",
 							"value": "356",
+							"description": "Text (3), required; card's CVV",
 							"type": "text"
 						},
 						{
 							"key": "cardExpiryMonth",
 							"value": "12",
+							"description": "Text (2), required; card's expiry month",
 							"type": "text"
 						},
 						{
 							"key": "cardExpiryYear",
 							"value": "23",
+							"description": "Text (2), required; card's expiry year",
 							"type": "text"
 						},
 						{
 							"key": "cardNumber",
-							"value": "4929 4212 3460 0821",
+							"value": "4929421234600821",
+							"description": "Text (19), required; card number",
 							"type": "text"
 						},
 						{
 							"key": "currencyCode",
 							"value": "GBP",
+							"description": "Text (3), required; ISO 4217 alphabetic code of the transaction currency",
 							"type": "text"
 						},
 						{
 							"key": "customerAddress",
 							"value": "Flat 6 Primrose Rise 347 Lavender Road Northampton GB",
+							"description": "Text (100), required; customer's combined full address, that is Line 2 + Line 1 + City + Province + Country",
 							"type": "text"
 						},
 						{
 							"key": "customerCountryCode",
 							"value": "GB",
+							"description": "Text (2), required; ISO 3166 Alpha-2 code of the customer's country",
 							"type": "text"
 						},
 						{
 							"key": "customerEmail",
-							"value": "test@test.com",
+							"value": "john.smith@test.com",
+							"description": "Text (256), required; customer's email",
 							"type": "text"
 						},
 						{
 							"key": "customerName",
 							"value": "John Smith",
+							"description": "Text (128), required; customer's full name",
 							"type": "text"
 						},
 						{
 							"key": "customerPhone",
-							"value": "442081264154",
+							"value": "+441632960607",
+							"description": "Text (25), not required; customer's phone",
 							"type": "text"
 						},
 						{
 							"key": "customerPostCode",
 							"value": "NN17 8YG",
+							"description": "Text (30), required, customer's postal/zip code",
 							"type": "text"
 						},
 						{
 							"key": "customerTown",
 							"value": "Northampton",
+							"description": "Text (80), required; customer's city",
+							"type": "text"
+						},
+						{
+							"key": "customerCounty",
+							"value": "Northamptonshire",
+							"description": "Text (50), not required; customer's province/state",
 							"type": "text"
 						},
 						{
 							"key": "deviceAcceptCharset",
 							"value": "",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceAcceptContent",
 							"value": "*/*",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceAcceptEncoding",
 							"value": "gzip, deflate, br",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceAcceptLanguage",
 							"value": "en-US",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceCapabilities",
 							"value": "javascript",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceChannel",
 							"value": "browser",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceIdentity",
 							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceScreenResolution",
 							"value": "1920x1080x24",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "deviceTimeZone",
 							"value": "-120",
+							"description": "browser data",
 							"type": "text"
 						},
 						{
 							"key": "merchantID",
 							"value": "132779",
+							"description": "Text (32), required; your merchant account ID provided by Pixxles",
 							"type": "text"
 						},
 						{
 							"key": "orderRef",
 							"value": "21",
+							"description": "Text (64), not required; order reference number",
 							"type": "text"
 						},
 						{
 							"key": "remoteAddress",
 							"value": "192.168.1.1",
+							"description": "Text (128), required; customer's IP address, currently only IPv4 is accepted, IPv6 may be declined",
 							"type": "text"
 						},
 						{
 							"key": "signature",
 							"value": "4354e94fe6c20a71b13b5318553e6c04f9f4f3f2966911d950875376b24dbcab9055c701a3e96aa98eaa4f38c17f5dea915a072311c1b3c7c0547525e8fdc461",
+							"description": "Text, hash generated using signatureKey provided by Pixxles",
 							"type": "text"
 						},
 						{
 							"key": "threeDSRedirectURL",
-							"value": "http://localhost/wordpress/?wc-api=wc_creditordebitcard",
+							"value": "https://mywebsite.com/wordpress/?wc-api=wc_creditordebitcard",
+							"description": "Your callback page",
 							"type": "text"
 						},
 						{
 							"key": "transactionUnique",
-							"value": "123456",
+							"value": "wc_order_QzMX3qltKrrEX-630cd01b496a81",
+							"description": "Text (48), required; your unique transaction identifier",
 							"type": "text"
 						},
 						{
 							"key": "type",
 							"value": "1",
+							"description": "Text, always send 1",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/Transactions/payment/direct",
-					"protocol": "http",
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"Transactions",
@@ -181,194 +218,7 @@
 					]
 				}
 			},
-			"response": [
-				{
-					"name": "http://localhost:5000/api/Transactions/payment/direct",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "action",
-									"value": "SALE",
-									"type": "text"
-								},
-								{
-									"key": "amount",
-									"value": "100",
-									"type": "text"
-								},
-								{
-									"key": "cardCVV",
-									"value": "356",
-									"type": "text"
-								},
-								{
-									"key": "cardExpiryMonth",
-									"value": "12",
-									"type": "text"
-								},
-								{
-									"key": "cardExpiryYear",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "cardNumber",
-									"value": "4929 4212 3460 0821",
-									"type": "text"
-								},
-								{
-									"key": "currencyCode",
-									"value": "GBP",
-									"type": "text"
-								},
-								{
-									"key": "customerAddress",
-									"value": "Flat 6 Primrose Rise 347 Lavender Road street address line number two Northampton state name GB",
-									"type": "text"
-								},
-								{
-									"key": "customerCountryCode",
-									"value": "GB",
-									"type": "text"
-								},
-								{
-									"key": "customerCounty",
-									"value": "state name",
-									"type": "text"
-								},
-								{
-									"key": "customerEmail",
-									"value": "test@test.ru",
-									"type": "text"
-								},
-								{
-									"key": "customerName",
-									"value": "John Smith",
-									"type": "text"
-								},
-								{
-									"key": "customerPhone",
-									"value": "+79520000000",
-									"type": "text"
-								},
-								{
-									"key": "customerPostCode",
-									"value": "NN17 8YG",
-									"type": "text"
-								},
-								{
-									"key": "customerTown",
-									"value": "Northampton",
-									"type": "text"
-								},
-								{
-									"key": "deviceAcceptCharset",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "deviceAcceptContent",
-									"value": "*/*",
-									"type": "text"
-								},
-								{
-									"key": "deviceAcceptEncoding",
-									"value": "gzip, deflate, br",
-									"type": "text"
-								},
-								{
-									"key": "deviceAcceptLanguage",
-									"value": "en-US",
-									"type": "text"
-								},
-								{
-									"key": "deviceCapabilities",
-									"value": "javascript",
-									"type": "text"
-								},
-								{
-									"key": "deviceChannel",
-									"value": "browser",
-									"type": "text"
-								},
-								{
-									"key": "deviceIdentity",
-									"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
-									"type": "text"
-								},
-								{
-									"key": "deviceScreenResolution",
-									"value": "3440x1440x24",
-									"type": "text"
-								},
-								{
-									"key": "deviceTimeZone",
-									"value": "-120",
-									"type": "text"
-								},
-								{
-									"key": "merchantID",
-									"value": "132779",
-									"type": "text"
-								},
-								{
-									"key": "orderRef",
-									"value": "21",
-									"type": "text"
-								},
-								{
-									"key": "remoteAddress",
-									"value": "2a04:4e41:13:c::5272:5299",
-									"type": "text"
-								},
-								{
-									"key": "signature",
-									"value": "4354e94fe6c20a71b13b5318553e6c04f9f4f3f2966911d950875376b24dbcab9055c701a3e96aa98eaa4f38c17f5dea915a072311c1b3c7c0547525e8fdc461",
-									"type": "text"
-								},
-								{
-									"key": "threeDSRedirectURL",
-									"value": "http://localhost/wordpress/?wc-api=wc_creditordebitcard",
-									"type": "text"
-								},
-								{
-									"key": "transactionUnique",
-									"value": "wc_order_QzMX3qltKrrEX-630cd01b496a82",
-									"type": "text"
-								},
-								{
-									"key": "type",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
-							"protocol": "https",
-							"host": [
-								"qa-transactions",
-								"pixxlesportal",
-								"com"
-							],
-							"path": [
-								"api",
-								"Transactions",
-								"payment",
-								"direct"
-							]
-						}
-					},
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
-				}
-			]
+			"response": []
 		}
 	]
 }

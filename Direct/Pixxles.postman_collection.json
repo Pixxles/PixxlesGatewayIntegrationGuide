@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b05eaf2f-a9db-4484-86af-9b74e95bd2c0",
+		"_postman_id": "79efc085-16db-487b-9c87-4717c3b36a45",
 		"name": "Pixxles",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "6382408"
@@ -396,6 +396,59 @@
 							"key": "orderRef",
 							"value": "reason",
 							"description": "Reason",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
+					"host": [
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
+					],
+					"path": [
+						"api",
+						"Transactions",
+						"payment",
+						"direct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request with data from ACS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "action",
+							"value": "SALE",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "132779",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "14c41ecb303d48917f306d354a4ed69578ac48113f4cecfd1e6472698c1568bc1377445f2236be107a2266156a9ee02a9db7ab73c9c47473e0501f9d3b3d727e",
+							"type": "text"
+						},
+						{
+							"key": "threeDSRef",
+							"value": "UDNLRVk6dHJhbnNhY3Rpb25JRD0yMDI5NTgzODImbWVyY2hhbnRJRD0xMzI3NzkmX19saWZlX189MTY2ODE3NjI0Nw==",
+							"type": "text"
+						},
+						{
+							"key": "threeDSResponse[threeDSMethodData]",
+							"value": "eyJ0aHJlZURTTWV0aG9kTm90aWZpY2F0aW9uVVJMIjoiaHR0cDovL2xvY2FsaG9zdC93b3JkcHJlc3MvP3djLWFwaT13Y19jcmVkaXRvcmRlYml0Y2FyZCZ0aHJlZURTQWNzUmVzcG9uc2U9bWV0aG9kIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiI3ZmE3MjA0Ni1mOTU0LTQ5MjEtODM2OS1lZjIyNzQ1ZGI2MDUifQ",
 							"type": "text"
 						}
 					]

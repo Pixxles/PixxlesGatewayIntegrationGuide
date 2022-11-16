@@ -8,8 +8,8 @@ The Direct Integration works by allowing you to keep the Customer on your system
 
 In addition to basic sales processing, the Direct Integration can be used to perform other actions such as refunds and cancellations.
 
-  ![Untitled Diagram drawio](https://user-images.githubusercontent.com/72015387/200515722-6d3ad3ae-06b7-41a1-9adf-53ac87a3fcb9.png)
 
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/72015387/201372625-fa351eec-8cae-4ce1-aa87-f1d27c373514.png)
 
 
   

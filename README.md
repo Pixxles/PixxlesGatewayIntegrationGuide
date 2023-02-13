@@ -81,6 +81,68 @@ Response
 cardCVVMandatory=Y&threeDSPolicy=1&threeDSVersion=2.1.0&merchantCategoryCode=5965&customerReceiptsRequired=N&cv2CheckPref=matched&addressCheckPref=matched&postcodeCheckPref=matched&threeDSCheckPref=authenticated&merchantID=132779&caEnabled=N&rtsEnabled=Y&cftEnabled=N&threeDSEnabled=Y&riskCheckEnabled=N&avscv2CheckEnabled=Y&surchargeEnabled=N&notifyEmailRequired=Y&eReceiptsEnabled=N&processorType=acquirer&deviceChannel=browser&deviceIdentity=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F107.0.0.0+Safari%2F537.36&deviceTimeZone=-120&deviceCapabilities=javascript&deviceScreenResolution=2752x1152x24&deviceAcceptContent=%2A%2F%2A&deviceAcceptEncoding=gzip%2C+deflate%2C+br&deviceAcceptLanguage=en-US&threeDSRedirectURL=https%3A%2F%2Flocalhost%2Fwordpress%2F%3Fwc-api%3Dwc_creditordebitcard&subMerchantID=262960000011819&facilitatorName=PIX&facilitatorID=10084515&initiator=consumer&requestMerchantID=132779&processMerchantID=132779&paymentMethod=card&cardType=Visa+Credit&cardTypeCode=VC&cardScheme=Visa&cardSchemeCode=VC&cardIssuer=BARCLAYS+BANK+UK+PLC&cardIssuerCountry=United+Kingdom&cardIssuerCountryCode=GBR&cardFlags=71237632&cardNumberValid=Y&threeDSXID=79065d19-d996-4d12-909a-6b356ef26a7e&threeDSRequest%5Bcreq%5D=eyJtZXNzYWdlVHlwZSI6IkNSZXEiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiI3YTg5NDQ5YS03NmFkLTQ3NGItYmE4Ny1iYjNjMjBjNTU3YWIiLCJhY3NUcmFuc0lEIjoiZTdhZWViNWEtMjVkZi00MzUzLWJiY2UtYjgxOTQ0ZGMzNTY4IiwibWVzc2FnZUV4dGVuc2lvbiI6W3sibmFtZSI6InAzLTNkcy1jb250ZXh0IiwiaWQiOiJwMy0zZHMtY29udGV4dCIsImNyaXRpY2FsaXR5SW5kaWNhdG9yIjpmYWxzZSwiZGF0YSI6eyJhcmVxIjp7InRocmVlRFNSZXF1ZXN0b3JJRCI6IjEyMzQ1Njc4IiwidGhyZWVEU1JlcXVlc3Rvck5hbWUiOiJQaXh4bGVzIC0gM0RTIiwidGhyZWVEU1JlcXVlc3RvclVSTCI6Imh0dHBzOi8vd3d3LnBpeHhsZXMuY29tLyIsInRocmVlRFNTZXJ2ZXJSZWZOdW1iZXIiOiIzRFNfTE9BX1NFUl9OU09GXzAyMDIwMF8wMDIwMyIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiN2E4OTQ0OWEtNzZhZC00NzRiLWJhODctYmIzYzIwYzU1N2FiIiwiYWNjdE51bWJlciI6IjQ5Mjk0MjEyMzQ2MDA4MjEiLCJjYXJkRXhwaXJ5RGF0ZSI6IjIyMTIiLCJ0aHJlZURTU2VydmVyT3BlcmF0b3JJRCI6IlRFU1QtT1BFUkFUT1IiLCJhY3F1aXJlckJJTiI6IjEyMzQ1NiIsImFjcXVpcmVyTWVyY2hhbnRJRCI6IjAwMDAwMDAwMDAwMDAwMCIsIm1lcmNoYW50TmFtZSI6IlBpeHhsZXMgLSAzRFMiLCJiaWxsQWRkckNvdW50cnkiOiI4MjYiLCJiaWxsQWRkckxpbmUxIjoiRmxhdCA2IFByaW1yb3NlIFJpc2UgMzQ3IExhdmVuZGVyIFJvYWQgTm9ydGhhbXB0b24iLCJiaWxsQWRkckxpbmUzIjoiTm9ydGhhbXB0b24iLCJiaWxsQWRkclBvc3RDb2RlIjoiTk4xNyA4WUciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJob21lUGhvbmUiOnsiY2MiOiI0NCIsInN1YnNjcmliZXIiOiIyMDgxMjY0MTU0In0sImNhcmRob2xkZXJOYW1lIjoiSm9obiBTbWl0aCIsIm1jYyI6IjU5NjUiLCJtZXJjaGFudENvdW50cnlDb2RlIjoiODI2IiwibWVzc2FnZUNhdGVnb3J5IjoiMDEiLCJtZXNzYWdlVHlwZSI6IkFSZXEiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIiwidGhyZWVEU1NlcnZlclVSTCI6Imh0dHBzOi8vZ2F0ZXdheS5waXh4bGVzY29ubmVjdC5jb20vcHVzaC9ub3RpZmljYXRpb24vP19xc189eEMyeXNzZkdZdWhpIiwidGhyZWVEU1JlcXVlc3RvckF1dGhlbnRpY2F0aW9uSW5kIjoiMDEiLCJwdXJjaGFzZUFtb3VudCI6IjEwMCIsInB1cmNoYXNlQ3VycmVuY3kiOiI4MjYiLCJwdXJjaGFzZUV4cG9uZW50IjoiMiIsInB1cmNoYXNlRGF0ZSI6IjIwMjIxMTE2MTEzNDQ3IiwidHJhbnNUeXBlIjoiMDEiLCJ0aHJlZURTQ29tcEluZCI6IlkiLCJicm93c2VyQWNjZXB0SGVhZGVyIjoiKi8qIiwiYnJvd3NlcklQIjoiMjAuNjEuMTI5LjgiLCJkZXZpY2VDaGFubmVsIjoiMDIiLCJub3RpZmljYXRpb25VUkwiOiJodHRwczovL2xvY2FsaG9zdC93b3JkcHJlc3MvP3djLWFwaT13Y19jcmVkaXRvcmRlYml0Y2FyZCZ0aHJlZURTQWNzUmVzcG9uc2U9Y2hhbGxlbmdlIiwiYnJvd3Nlckxhbmd1YWdlIjoiZW4tVVMiLCJicm93c2VySmF2YUVuYWJsZWQiOmZhbHNlLCJicm93c2VyQ29sb3JEZXB0aCI6IjI0IiwiYnJvd3NlclNjcmVlbkhlaWdodCI6IjExNTIiLCJicm93c2VyU2NyZWVuV2lkdGgiOiIyNzUyIiwiYnJvd3NlclRaIjoiLTEyMCIsImJyb3dzZXJVc2VyQWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTA3LjAuMC4wIFNhZmFyaS81MzcuMzYifSwiYXJlcyI6eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjdhODk0NDlhLTc2YWQtNDc0Yi1iYTg3LWJiM2MyMGM1NTdhYiIsImFjc0NoYWxsZW5nZU1hbmRhdGVkIjoiTiIsImFjc0RlY0NvbkluZCI6Ik4iLCJhY3NPcGVyYXRvcklEIjoiQWNzT3BJZCA2Mzc0Y2FkODg2OTQ3IiwiYWNzUmVmZXJlbmNlTnVtYmVyIjoiM0RTX0xPQV9TRVJfTlNPRl8wMjAxMDBfMDAwNTEiLCJhY3NSZW5kZXJpbmdUeXBlIjp7ImFjc0ludGVyZmFjZSI6IjAyIiwiYWNzVWlUZW1wbGF0ZSI6IjA1In0sImFjc1RyYW5zSUQiOiJlN2FlZWI1YS0yNWRmLTQzNTMtYmJjZS1iODE5NDRkYzM1NjgiLCJhY3NVUkwiOiJodHRwczovL2Fjcy4zZHMtcGl0LmNvbS8iLCJhdXRoZW50aWNhdGlvblR5cGUiOiIwMSIsImRzUmVmZXJlbmNlTnVtYmVyIjoiM0RTX0xPQV9TRVJfTlNPRl8wMjAxMDBfMDAwNTEiLCJkc1RyYW5zSUQiOiI3OTA2NWQxOS1kOTk2LTRkMTItOTA5YS02YjM1NmVmMjZhN2UiLCJtZXNzYWdlVHlwZSI6IkFSZXMiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIiwidHJhbnNTdGF0dXMiOiJDIiwibWVzc2FnZUV4dGVuc2lvbiI6W3sibmFtZSI6IkFDUyBEYXRhIiwiaWQiOiJBMDAwMDAwMDA0LWFjc0RhdGEiLCJjcml0aWNhbGl0eUluZGljYXRvciI6ZmFsc2UsImRhdGEiOnsiQTAwMDAwMDAwNC1hY3NEYXRhIjp7IndoaXRlbGlzdFN0YXR1cyI6IlkifX19XX19fV0sImNoYWxsZW5nZVdpbmRvd1NpemUiOiIwMiJ9&threeDSDetails%5BtransID%5D=79065d19-d996-4d12-909a-6b356ef26a7e&threeDSDetails%5BdsTransID%5D=79065d19-d996-4d12-909a-6b356ef26a7e&threeDSDetails%5BacsTransID%5D=69e2f0bc-a7c6-40cf-b31f-80237bd0797d&threeDSDetails%5BtransactionStatus%5D=Y&threeDSDetails%5BtransactionStatusReason%5D=&threeDSDetails%5BauthenticationType%5D=01&threeDSDetails%5BauthenticationValue%5D=AAABB5NWYSAFKRAhQlZhAAAAAAA%3D&threeDSDetails%5Beci%5D=05&threeDSDetails%5BinteractionCounter%5D=01&threeDSDetails%5BchallengeCancelationIndicator%5D=&threeDSDetails%5BchallengeMandatedIndicator%5D=&threeDSDetails%5BcardholderInformation%5D=&threeDSDetails%5BwhitelistStatus%5D=N&threeDSDetails%5BwhitelistStatusSource%5D=&threeDSDetails%5Bversion%5D=2.1.0&threeDSDetails%5Bversions%5D=2.1.0&threeDSDetails%5Bfallback%5D=N&threeDSDetails%5BissuerCountryCode%5D=826&threeDSDetails%5BacquirerCountryCode%5D=826&threeDSDetails%5Bpsd2Region%5D=Y&vcsResponseCode=0&vcsResponseMessage=Success+-+no+velocity+check+rules+applied&transactionID=203927249&xref=22111611HD34XM21XN03MZD&state=captured&remoteAddress=20.61.129.8&action=SALE&type=1&countryCode=826&currencyCode=826&currencyExponent=2&currencySymbol=%C2%A3&amount=100&orderRef=36&transactionUnique=wc_order_r54Vt5XpTfird-6374caad1a571&cardNumberMask=492942%2A%2A%2A%2A%2A%2A0821&cardExpiryDate=1222&cardExpiryMonth=12&cardExpiryYear=22&customerName=John+Smith&customerAddress=Flat+6+Primrose+Rise+347+Lavender+Road+Northampton+GB&customerTown=Northampton&customerPostcode=NN17+8YG&customerCountryCode=GB&customerPhone=%2B442081264154&customerEmail=test%40test.com&threeDSEnrolled=Y&threeDSURL=https%3A%2F%2Facs.3ds-pit.com%2F&threeDSResponseCode=0&threeDSResponseMessage=Successfully+authenticated&threeDSVETimestamp=2022-11-16+11%3A34%3A21&threeDSCATimestamp=2022-11-16+11%3A35%3A22&threeDSCheck=authenticated&responseCode=0&responseMessage=AUTHCODE%3A117207&threeDSResponse%5Bcres%5D=eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjdhODk0NDlhLTc2YWQtNDc0Yi1iYTg3LWJiM2MyMGM1NTdhYiIsImFjc1RyYW5zSUQiOiI2OWUyZjBiYy1hN2M2LTQwY2YtYjMxZi04MDIzN2JkMDc5N2QiLCJjaGFsbGVuZ2VDb21wbGV0aW9uSW5kIjoiWSIsIm1lc3NhZ2VUeXBlIjoiQ1JlcyIsIm1lc3NhZ2VWZXJzaW9uIjoiMi4xLjAiLCJ0cmFuc1N0YXR1cyI6IlkifQ&requestID=6374caf9597e7&threeDSAuthenticated=Y&threeDSECI=05&threeDSCAVV=AAABB5NWYSAFKRAhQlZhAAAAAAA%3D&authorisationCode=117207&responseStatus=0&amountApproved=100&amountReceived=100&amountRetained=100&avscv2ResponseCode=222100&avscv2ResponseMessage=ALL+MATCH&avscv2AuthEntity=merchant+host&cv2Check=matched&addressCheck=matched&postcodeCheck=matched&acquirerTransactionID=6374cafa3d48d&acquirerResponseCode=0&acquirerResponseMessage=AUTHCODE%3A117207&timestamp=2022-11-16+11%3A35%3A22&__wafRequestID=2022-11-16T11%3A35%3A21Z%7C3c076f5731%7C185.16.137.242%7CpkljCrpbi8&signature=92eb7fe7dea1a4d2fe1814966292baaaf0297a95369ffe2418110173bc13f9a93ac77d6a2858007d513ea86b3d3205d5e253cf0bf119707e5102b07e57cde435
 ```
 
+## Sample Signature Calculation
+
+Example Transaction:
+
+            var key = "DontTellAnyone";
+            var transaction = new Dictionary<string, string>()
+            {
+                { "merchantID", "100001" },
+                { "action", "SALE" },
+                { "type", "1" },
+                { "currencyCode", "826" },
+                { "amount", "2691" },
+                { "transactionUnique", "55f025addd3c2" },
+                { "orderRef", "Signature Test" },
+                { "cardNumber", "4929 4212 3460 0821" },
+                { "cardExpiryDate", "1213" },
+            };
+**The transaction used for signature calculation must not include any 'signature' field as this will be added after signing when its value is known.**
+
+Step 1 - Sort transaction values by their field name Transaction fields must be in ascending field name order according to their numeric ASCII value.
+
+    var sortedDict = new SortedDictionary<string, string>(transaction);
+
+
+Step 2 - Create url encoded string from sorted fields Use RFC 1738 and the application/x-www-form-urlencoded media type, which implies that spaces are encoded as plus (+) signs.
+
+Step 3 - Normalise all line endings in the url encoded string Convert all CR NL, NL CR, CR character sequences to a single NL character.
+
+Step 4 - Append your signature key to the normalised string The signature key is appended to the normalised string with no separator characters
+
+	   var request = string.Join('&',
+	       parameters.Select(x => $"{Escape(x.Key)}={Escape(x.Value)}"));
+
+	   request += key;
+
+	   request= request.Replace("\r\n", "\n")
+	       .Replace("\n\r", "\n").Replace("\r", "\n");
+
+       private string Escape(string str)
+       {
+           return string.IsNullOrEmpty(str)
+               ? "" : Uri.EscapeDataString(str).Replace("%20", "+");
+       }
+
+Step 5 - Hash the string using the SHA-512 algorithm The normalised string is hashed to a more compact value using the secure SHA-512 hashing algorithm
+
+	private string Sha512(string input)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(input);
+            using SHA512 hash = SHA512.Create();
+            byte[] hashedInputBytes = hash.ComputeHash(bytes);
+            
+            StringBuilder hashedInputStringBuilder = new(128);
+            foreach (byte b in hashedInputBytes)
+                hashedInputStringBuilder.Append(b.ToString("X2"));
+            return hashedInputStringBuilder.ToString();
+        }
+
+Step 6 - Add the signature to the transaction form or post data The signature should be sent as part of the transaction in a field called 'signature'.
+
+	request += $"{signature}={hash}"
+
 
 
 

@@ -173,11 +173,6 @@ The Gateway uses a set of enhanced response codes to indicate if there is an iss
 transaction which prevented any authorisation response being received from the Acquirer. These
 response codes start at 65536.
 
-The responses are grouped into categories and the codes in the ‘missing’ and ‘invalid’ field
-categories are designed so that that invalid field code is exactly 256 greater than the
-corresponding missing field code. For example, the code of a missing action field is 66055 and
-the corresponding code for an invalid action field is 66311 (66055 + 256).
-
 ## General Error Codes: 65536 - 65791
 | Code | Description |
 | --- | --- | 

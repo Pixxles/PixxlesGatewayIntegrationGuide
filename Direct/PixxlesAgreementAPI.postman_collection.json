@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "83a65167-1a59-461c-8b00-010c9fdbe9df",
+		"name": "PixxlesAgreementAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Agreements",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"sort\": \"startDate\",\r\n    \"sortOrder\": \"asc\",\r\n    \"page\": 1,\r\n    \"pageSize\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pixxles-dev.azurewebsites.net/api/Agreement/get",
+					"protocol": "https",
+					"host": [
+						"pixxles-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Agreement",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop Agreement",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://pixxles-dev.azurewebsites.net/api/Agreement/{{id}}/stop",
+					"protocol": "https",
+					"host": [
+						"pixxles-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Agreement",
+						"{{id}}",
+						"stop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Agreement",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://pixxles-dev.azurewebsites.net/api/Agreement/{{id}}",
+					"protocol": "https",
+					"host": [
+						"pixxles-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Agreement",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE RECURRING Transaction Request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "action",
+							"value": "VERIFY",
+							"description": "Text (128), required; always VERIFY",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "0",
+							"description": "Text (20), required; always 0",
+							"type": "text"
+						},
+						{
+							"key": "cardCVV",
+							"value": "356",
+							"description": "Text (3), required; card's CVV",
+							"type": "text"
+						},
+						{
+							"key": "cardExpiryMonth",
+							"value": "12",
+							"description": "Text (2), required; card's expiry month",
+							"type": "text"
+						},
+						{
+							"key": "cardExpiryYear",
+							"value": "23",
+							"description": "Text (2), required; card's expiry year",
+							"type": "text"
+						},
+						{
+							"key": "cardNumber",
+							"value": "4929421234600821",
+							"description": "Text (19), required; card number",
+							"type": "text"
+						},
+						{
+							"key": "currencyCode",
+							"value": "GBP",
+							"description": "Text (3), required; ISO 4217 alphabetic code of the transaction currency",
+							"type": "text"
+						},
+						{
+							"key": "customerAddress",
+							"value": "Flat 6 Primrose Rise 347 Lavender Road Northampton GB",
+							"description": "Text (100), required; customer's combined full address, that is Line 2 + Line 1 + City + Province + Country",
+							"type": "text"
+						},
+						{
+							"key": "customerCountryCode",
+							"value": "GB",
+							"description": "Text (2), required; ISO 3166 Alpha-2 code of the customer's country",
+							"type": "text"
+						},
+						{
+							"key": "customerEmail",
+							"value": "john.smith@test.com",
+							"description": "Text (256), required; customer's email",
+							"type": "text"
+						},
+						{
+							"key": "customerName",
+							"value": "John Smith",
+							"description": "Text (128), required; customer's full name",
+							"type": "text"
+						},
+						{
+							"key": "customerPhone",
+							"value": "+441632960607",
+							"description": "Text (25), not required; customer's phone",
+							"type": "text"
+						},
+						{
+							"key": "customerPostCode",
+							"value": "NN17 8YG",
+							"description": "Text (30), required, customer's postal/zip code",
+							"type": "text"
+						},
+						{
+							"key": "customerTown",
+							"value": "Northampton",
+							"description": "Text (80), required; customer's city",
+							"type": "text"
+						},
+						{
+							"key": "customerCounty",
+							"value": "Northamptonshire",
+							"description": "Text (50), not required; customer's province/state",
+							"type": "text"
+						},
+						{
+							"key": "deviceAcceptCharset",
+							"value": "",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceAcceptContent",
+							"value": "*/*",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceAcceptEncoding",
+							"value": "gzip, deflate, br",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceAcceptLanguage",
+							"value": "en-US",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceCapabilities",
+							"value": "javascript",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceChannel",
+							"value": "browser",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceIdentity",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceScreenResolution",
+							"value": "1920x1080x24",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "deviceTimeZone",
+							"value": "-120",
+							"description": "browser data",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "132779",
+							"description": "Text (32), required; your merchant account ID provided by Pixxles",
+							"type": "text"
+						},
+						{
+							"key": "orderRef",
+							"value": "21",
+							"description": "Text (64), not required; order reference number",
+							"type": "text"
+						},
+						{
+							"key": "remoteAddress",
+							"value": "192.168.1.1",
+							"description": "Text (128), required; customer's IP address, currently only IPv4 is accepted, IPv6 may be declined",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "4354e94fe6c20a71b13b5318553e6c04f9f4f3f2966911d950875376b24dbcab9055c701a3e96aa98eaa4f38c17f5dea915a072311c1b3c7c0547525e8fdc461",
+							"description": "Text, hash generated using signatureKey provided by Pixxles",
+							"type": "text"
+						},
+						{
+							"key": "threeDSRedirectURL",
+							"value": "https://mywebsite.com/wordpress/?wc-api=wc_creditordebitcard",
+							"description": "Your callback page",
+							"type": "text"
+						},
+						{
+							"key": "transactionUnique",
+							"value": "wc_order_QzMX3qltKrrEX-630cd01b496a81",
+							"description": "Text (48), required; your unique transaction identifier",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"description": "Text, always send 1",
+							"type": "text"
+						},
+						{
+							"key": "rtCycleAmount",
+							"value": "10025",
+							"description": "Text (20), required;  recurring transaction amount, the last two digits are always decimal places, in this example it is 100.25",
+							"type": "default"
+						},
+						{
+							"key": "rtAgreementType",
+							"value": "recurring",
+							"description": "Text, always send recurring",
+							"type": "default"
+						},
+						{
+							"key": "rtCycleDuration",
+							"value": "1",
+							"description": "Text, required",
+							"type": "default"
+						},
+						{
+							"key": "rtCycleDurationUnit",
+							"value": "day",
+							"description": "Text, required; accepted values: day, week, month, year",
+							"type": "default"
+						},
+						{
+							"key": "rtCycleCount",
+							"value": "0",
+							"description": "Text, required",
+							"type": "default"
+						},
+						{
+							"key": "rtName",
+							"value": "",
+							"description": "Text, optional, must be unique",
+							"type": "default"
+						},
+						{
+							"key": "rtDescription",
+							"value": "",
+							"description": "Text, optional, must be unique",
+							"type": "default"
+						},
+						{
+							"key": "rtPolicyRef",
+							"value": "",
+							"description": "Text, optional, must be unique",
+							"type": "default"
+						},
+						{
+							"key": "rtStartDate",
+							"value": "04/18/2023 06:50:13",
+							"description": "Text, date",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://qa-transactions.pixxlesportal.com/api/Transactions/payment/direct",
+					"protocol": "https",
+					"host": [
+						"qa-transactions",
+						"pixxlesportal",
+						"com"
+					],
+					"path": [
+						"api",
+						"Transactions",
+						"payment",
+						"direct"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

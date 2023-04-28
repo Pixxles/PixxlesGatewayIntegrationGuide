@@ -135,3 +135,26 @@ You can delete any agreement that has never been started.
   "text": "Failed to delete agreement"
 }
 ```
+## Subscriptions
+
+To create a subscription, you need to create an initial transaction with the addition **rtAgreementType = 'recurring'** to Initial request
+
+
+After successfully initializing transactions for the next subscription payment on the client side, you must use the scheduler to create a transaction using the **xref** received from the previous transaction
+
+#### Scheduled Subscriptions
+
+![Untitled Diagram](https://user-images.githubusercontent.com/72015387/235152276-3e021cd1-4dbd-4144-899b-75cf6d64b064.jpg)
+
+```json
+{
+	"merchantID": "{merchantID}",
+	"xref": "{xref}",
+	"amount": "{amount}",
+	"action": "SALE",
+	"type": "9",
+	"rtAgreementType": "recurring",
+	"avscv2CheckRequired": "N",
+	"signature": "{signature}"
+}
+```

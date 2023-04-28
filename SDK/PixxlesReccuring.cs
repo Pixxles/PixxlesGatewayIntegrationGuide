@@ -1,14 +1,12 @@
 using RestSharp;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web;
 
 namespace SDK
 {
-    public class PixxlesReccuring
+    public class PixxlesReccuring : PixxlesBase
     {
-        private readonly string merchantID = "MERCHANT_ID_HERE";
-        private readonly string signatureKey = "SIGNATURE_KEY_HERE";
+        private readonly string merchantID = "132779";
+        private readonly string signatureKey = "gpfu2XDYLKWvbZi";
         private readonly string gatewayUrl = "https://qa-transactions.pixxlesportal.com";
         private readonly string directPath = "/api/Transactions/payment/direct";
 
@@ -58,8 +56,8 @@ namespace SDK
             {
                 { "action", "VERIFY" },
                 { "merchantID", merchantID },
-                { "threeDSRef","THREEDSREF_HERE" },
-                { "threeDSResponse[threeDSMethodData]", "THREEDSMETHODDATA_HERE" },
+                { "threeDSRef","UDNLRVk6dHJhbnNhY3Rpb25JRD0yMzU2NDY2ODUmbWVyY2hhbnRJRD0xMzI3NzkmX19saWZlX189MTY4MjM1NDkyNQ==" },
+                { "threeDSResponse[threeDSMethodData]", "eyJ0aHJlZURTTWV0aG9kTm90aWZpY2F0aW9uVVJMIjoiaHR0cHM6Ly9sb2NhbGhvc3QvdGVzdHNpdGU_dGhyZWVEU0Fjc1Jlc3BvbnNlPW1ldGhvZCIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiMTIwNTkwNzUtMjg1Ni00ZGFkLWJhMWItNGY1N2ZiNzg3NTMyIn0" },
             };
 
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -99,8 +97,8 @@ namespace SDK
             {
                 { "action", "VERIFY" },
                 { "merchantID", merchantID },
-                { "threeDSRef","THREEDSREF_HERE" },
-                { "threeDSResponse[cres]", "CRES_HERE" },
+                { "threeDSRef","UDNLRVk6dHJhbnNhY3Rpb25JRD0yMzU2NDY2ODUmbWVyY2hhbnRJRD0xMzI3NzkmX19saWZlX189MTY4MjM1NTA2NA==" },
+                { "threeDSResponse[cres]", "eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjEyMDU5MDc1LTI4NTYtNGRhZC1iYTFiLTRmNTdmYjc4NzUzMiIsImFjc1RyYW5zSUQiOiI5ODY1MDRlYS1lYjk0LTRlZGItYWZjOC0wMGFlNTljMWQxYWQiLCJjaGFsbGVuZ2VDb21wbGV0aW9uSW5kIjoiWSIsIm1lc3NhZ2VUeXBlIjoiQ1JlcyIsIm1lc3NhZ2VWZXJzaW9uIjoiMi4xLjAiLCJ0cmFuc1N0YXR1cyI6IlkifQ" },
             };
 
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -151,56 +149,21 @@ namespace SDK
                 { "deviceScreenResolution", "1920x1080x24" },
                 { "deviceTimeZone", "-120" },
                 { "merchantID", merchantID },
-                { "orderRef", "123123" },
+                { "orderRef", "n2pro2404" },
                 { "remoteAddress", "192.168.0.1" },
                 { "threeDSRedirectURL", "https://localhost/testsite" },
-                { "transactionUnique", Guid.NewGuid().ToString() },
+                { "transactionUnique", "n2pro240423"},
                 { "type", "1"},
-                { "rtCycleAmount", "200" },
+                { "rtCycleAmount", "310" },
                 { "rtAgreementType", "recurring" },
                 { "rtCycleDuration","1" },
                 { "rtCycleDurationUnit","day" },
-                { "rtCycleCount","0" },
-                //{ "rtName", null },
-                //{ "rtDescription", null },
-                //{ "rtPolicyRef", null },
-                { "rtStartDate","04/18/2023 06:50:13"}
+                { "rtCycleCount","3" },
+                { "rtName", "n2pro240423" },
+                { "rtDescription", "n2pro240423" },
+                { "rtPolicyRef", "n2pro240423" },
+                { "rtStartDate","04/25/2023 00:01:00"}
             };
-        }
-
-        private string CreateSignature(SortedDictionary<string, string> parameters, string key)
-        {
-            string signature = string.Join('&',
-                parameters.Select(x => $"{Escape(x.Key)}={Escape(x.Value)}"));
-
-            signature += key;
-
-            signature = signature.Replace("\r\n", "\n")
-                .Replace("\n\r", "\n").Replace("\r", "\n");
-
-            signature = Sha512(signature);
-
-            return signature.ToLower();
-        }
-
-        private string Escape(string str)
-        {
-            return string.IsNullOrEmpty(str)
-                ? "" : Uri.EscapeDataString(str).Replace("%20", "+");
-        }
-
-        private string Sha512(string input)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            using SHA512 hash = SHA512.Create();
-            byte[] hashedInputBytes = hash.ComputeHash(bytes);
-
-            // Convert to text
-            // StringBuilder Capacity is 128, because 512 bits / 8 bits in byte * 2 symbols for byte 
-            StringBuilder hashedInputStringBuilder = new(128);
-            foreach (byte b in hashedInputBytes)
-                hashedInputStringBuilder.Append(b.ToString("X2"));
-            return hashedInputStringBuilder.ToString();
         }
     }
 }

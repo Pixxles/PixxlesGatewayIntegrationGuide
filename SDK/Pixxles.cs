@@ -1,11 +1,9 @@
 using RestSharp;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web;
 
 namespace SDK
 {
-    public class Pixxles
+    public class Pixxles : PixxlesBase
     {
         private readonly string merchantID = "MERCHANT_ID_HERE";
         private readonly string signatureKey = "SIGNATURE_KEY_HERE";
@@ -167,41 +165,6 @@ namespace SDK
                 { "transactionUnique", Guid.NewGuid().ToString() },
                 { "type", "1"}
             };
-        }
-
-        private string CreateSignature(SortedDictionary<string, string> parameters, string key)
-        {
-            string signature = string.Join('&',
-                parameters.Select(x => $"{Escape(x.Key)}={Escape(x.Value)}"));
-
-            signature += key;
-
-            signature = signature.Replace("\r\n", "\n")
-                .Replace("\n\r", "\n").Replace("\r", "\n");
-
-            signature = Sha512(signature);
-
-            return signature.ToLower();
-        }
-
-        private string Escape(string str)
-        {
-            return string.IsNullOrEmpty(str)
-                ? "" : Uri.EscapeDataString(str).Replace("%20", "+");
-        }
-
-        private string Sha512(string input)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            using SHA512 hash = SHA512.Create();
-            byte[] hashedInputBytes = hash.ComputeHash(bytes);
-
-            // Convert to text
-            // StringBuilder Capacity is 128, because 512 bits / 8 bits in byte * 2 symbols for byte 
-            StringBuilder hashedInputStringBuilder = new(128);
-            foreach (byte b in hashedInputBytes)
-                hashedInputStringBuilder.Append(b.ToString("X2"));
-            return hashedInputStringBuilder.ToString();
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+	"merchantID": "{merchantID}",
+	"xref": "{xref}",
+	"amount": "{amount}",
+	"action": "SALE",
+	"type": "9",
+	"rtAgreementType": "recurring",
+	"avscv2CheckRequired": "N",
+	"signature": "{signature}"
+}

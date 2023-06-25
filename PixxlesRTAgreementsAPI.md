@@ -1,6 +1,6 @@
 # Pixxles Recurring API
-## Create an Agreement
-In order to create an RT agreement, **Direct Integration** is required first: https://github.com/Pixxles/PixxlesGatewayIntegrationGuide
+## Create an Agreement using gateway-based scheduling
+In order to create an RT agreement where recurring scheduling is controlled by the gateway, **Direct Integration** is required first: https://github.com/Pixxles/PixxlesGatewayIntegrationGuide
 
 The initial request is similar to the one in the documentation, with a few differences: "action" should always be "VERIFY", "amount" should always be "0", and "rt*" type of fields need to be passed. Below is an example of an initial request that creates an RT agreement.
 
@@ -50,6 +50,29 @@ The initial request is similar to the one in the documentation, with a few diffe
 ```
 
 In the example above, GBP 2.00 will be debited every 1 day for 5 days., starting on 04/18/2023 06:50:13
+
+## Create an Agreement using client-based scheduling
+It is also possible to run recurring transactions with scheduling controlled on the merchant side. This always involves an initial transaction marked for recurring, and subsequent transactions that are based on the initial one.
+
+To run the initial transaction that will be used as a ground for all other recurring transactions for an order, you need to create a normal initial transaction as described in the Direct Integration guide, but with the addition of **rtAgreementType = 'recurring'**.
+
+When the time for the next recurring transaction comes, a simplified request needs to be sent using **xref** received from the previous transaction:
+
+![Untitled Diagram](https://user-images.githubusercontent.com/72015387/235152276-3e021cd1-4dbd-4144-899b-75cf6d64b064.jpg)
+
+```json
+{
+	"merchantID": "{merchantID}",
+	"xref": "{xref}",
+	"amount": "{amount}",
+	"action": "SALE",
+	"type": "9",
+	"rtAgreementType": "recurring",
+	"avscv2CheckRequired": "N",
+	"signature": "{signature}"
+}
+```
+Note that in this example type is 9 which tells the gateway that this is a recurring transaction.
 
 ## RT Agreements API
 

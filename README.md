@@ -152,9 +152,9 @@ Step 6 - Add the signature to the transaction form or post data The signature sh
 
 -  `Direct/InitialResponse.json` – Initial Response
 
--  `Direct/3DSTester.php` – Payment request 1
+-  `Direct/3DS-initial.php` – Initial request
 
--  `Direct/3DSv2-test-101.php` – Payment request 2
+-  `Direct/3DSTester.php` – Continue request
 
 -  `Direct/step1.html` – ACS request 1
 

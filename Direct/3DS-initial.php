@@ -1,12 +1,13 @@
 <?php	  
-	
+
 // Merchant details and URL to this sample code.
 $key = '';
 $merchantID = '';
+
 $samplecodeURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 // Gateway URL  
-$gatewayURL = ''; 
+$gatewayURL = '{gatewayURL}/api/Transactions/payment/direct';
 
 // If this is the first request
 if (!isset($_GET['threeDSAcsResponse'])) {
@@ -14,30 +15,31 @@ if (!isset($_GET['threeDSAcsResponse'])) {
     // Request  
     $req = array(
     'merchantID' => $merchantID,
-	'subMerchantID' => '704202123456789',
     'action' => 'SALE',
-    'amount' => 2199,
+    'amount' => 772,
     'type' => 1,
-    'countryCode' => '826',
     'currencyCode' => '826',
-    'orderRef' => 'CC #112406',
+    'orderRef' => 'CC#77777',
     'transactionUnique' => uniqid(5),
 
     // Credit card details
-    'cardNumber' => '4543059999999982',
-    'cardExpiryDate' => '1221',
-    'cardCVV' => '110',
+    'cardNumber'         => '{cardNumber}',
+    'cardExpiryMonth'    => '{cardExpiryMonth}',
+    'cardExpiryYear'     => '{cardExpiryYear}',
+    'cardCVV'            => '{cardCVV}',
 
     // Customer details
-    'customerAddress' => '76 Test road',
-    'customerPostCode' => 'TE548ST',
-    'customerName' => 'Test',
- // 'threeDSVersion' => '2',          // Should not be needed.
- // 'merchantCategoryCode' => 5411,   // Only required if not setup on the merchant.
+    'customerCountryCode' => '{customerCountryCode}',
+    'customerAddress' => '{customerAddress}',
+    'customerTown' => '{customerTown}',
+    'customerPostCode' => '{customerPostCode}',
+    'customerName' => '{customerName}',
+    'customerPhone' => '{customerPhone}',
 
      // Three DS V2 fields required
     'remoteAddress'             => $_SERVER['REMOTE_ADDR'],
-    'threeDSRedirectURL'        => 'https://transaction-test.azurewebsites.net/3DSTester.php' . '?threeDSAcsResponse',
+    // Change {myshop.com} to your own website
+    'threeDSRedirectURL'        => 'https://{myshop.com}/3DSTester.php' . '?threeDSAcsResponse',
     'deviceChannel'				=> 'browser',
     'deviceIdentity'			=> (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : null),
     'deviceTimeZone'			=> '0',
@@ -78,6 +80,8 @@ if (!isset($_GET['threeDSAcsResponse'])) {
     // Build the request containing the threeDSResponse with data from the 3DS page
     // and include the threeDSRef stored in the cookie.
     $threeDSRequest = array(
+        'merchantID' => $merchantID,
+        'action' => 'SALE',
         'threeDSRef' => $_COOKIE['threeDSRef'], // This is the threeDSref store in the cookie from the previous gateway response.
         'threeDSResponse' => $_POST, // <-- Note here no fields are hard coded. Whatever is POSTED from 3DS is returned.
     );
@@ -108,10 +112,7 @@ if (!isset($_GET['threeDSAcsResponse'])) {
 
     //This cycle continues until the response is 0 and the transaction is complete.
 
-} 
-
-
-
+}
 
 /**
  * Send request
@@ -172,8 +173,6 @@ function sendRequest($request, $gatewayURL) {
     return $response;
 }
 
-
-
 /**
  * Sign request
  * 
@@ -194,7 +193,7 @@ function createSignature(array $data, $key) {
 
     // Hash the signature string and the key together  
     return hash('SHA512', $ret . $key);  
-}  
+}
 
 ?> 
 

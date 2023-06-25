@@ -1,23 +1,32 @@
 <?php
 
+// Merchant details and URL to this sample code.
+$key = '';
+$merchantID = '';
+
+// Gateway URL  
+$gatewayURL = '{gatewayURL}/api/Transactions/payment/direct';
+
  print_r($_POST);
  echo "<br>";     
   echo "<br>";  
+
 $threeDSRequest = array(
+  'merchantID' => $merchantID,
+  'action' => 'SALE',
   'threeDSRef' => $_COOKIE['threeDSRef'], // This is the threeDSref store in the cookie from the previous gateway response.
   'threeDSResponse' => $_POST, // <-- Note here no fields are hard coded. Whatever is POSTED from 3DS is returned.
 );
  print_r($threeDSRequest);
+ 
  echo "<br>";     
   echo "<br>";  
 // Sign the request
-$threeDSRequest['signature'] = createSignature($threeDSRequest, 'gpfu2XDYLKWvbZi');  
+$threeDSRequest['signature'] = createSignature($threeDSRequest, $key);  
  echo "<br>";  
  print_r($threeDSRequest);
  echo "<br>";   
 
-
-$gatewayURL = ''; 
  // Initiate and set curl options to post to the gateway  
  $ch = curl_init($gatewayURL);  
  curl_setopt($ch, CURLOPT_POST, true);  
@@ -69,8 +78,6 @@ $gatewayURL = '';
      echo "<p>Failed to take payment: " . htmlentities($response['responseMessage']) .  "</p>";  
  }  
 
-
-
 /**
  * Sign request
  * 
@@ -95,39 +102,5 @@ function createSignature(array $data, $key) {
 
   // Hash the signature string and the key together  
   return hash('SHA512', $ret . $key);  
-}  
-
-
-
-
-
-
-
-
-//     $response = array (
-//         'threeDSRef' => 'UDNLRVk6dHJhbnNhY3Rpb25JRD0yNTYwJm1lcmNoYW50SUQ9MTMyNzc5Jl9fbGlmZV9fPTE2MjQ1MzE2Nzk=',
-//         'threeDSURL' => 'https://acs.3ds-pit.com/?method',
-//         'threeDSMethodData' => 'eyJ0aHJlZURTTWV0aG9kTm90aWZpY2F0aW9uVVJMIjoiaHR0cDovLzNkc3YyLnRlc3QuZGVtb2luaXQuY29tLzNEU1Rlc3Rlci5waHA_dGhyZWVEU0Fjc1Jlc3BvbnNlPW1ldGhvZCIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiMmQ5N2U1ZTgtMzk3Yy00M2VmLWI0ODgtOTQ1YjA1MTBkMTZiIn0',
-
-// );
-      
-
-// // Start of HTML form with URL
-//     echo "<p>Your transaction requires 3D Secure Authentication</p>  
-//             <form action=\"" . htmlentities($response['threeDSURL']) . "\"method=\"post\">";
-
-//     // Add threeDSRef from the gateway response
-//     echo '<input type="hidden" name="threeDSRef" value="'. $response['threeDSRef'] . '">';
-
-
-//   echo '<input type="hidden" name="threeDSMethodData" value="'. $response['threeDSMethodData'] . '">';
-
-//     // For each of the fields in threeDSRequest output a hidden input field with it's key/value
-//    // foreach($response['threeDSRequest'] as $key => $value) {
-//      //   echo '<input type="hidden" name="'. $key .'" value="'. $value. '">';
-//    // }
-
-//     // End of html form with submit button.
-//     echo "<input type=\"submit\" value=\"Continue\">
-//             </form>";         
+}      
 ?>

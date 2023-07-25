@@ -1,5 +1,14 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+
 // Merchant details and URL to this sample code.
 $key = '';
 $merchantID = '';
@@ -7,9 +16,6 @@ $merchantID = '';
 // Gateway URL  
 $gatewayURL = '{gatewayURL}/api/Transactions/payment/direct';
 
- print_r($_POST);
- echo "<br>";     
-  echo "<br>";  
 
 $threeDSRequest = array(
   'merchantID' => $merchantID,
@@ -17,15 +23,8 @@ $threeDSRequest = array(
   'threeDSRef' => $_COOKIE['threeDSRef'], // This is the threeDSref store in the cookie from the previous gateway response.
   'threeDSResponse' => $_POST, // <-- Note here no fields are hard coded. Whatever is POSTED from 3DS is returned.
 );
- print_r($threeDSRequest);
- 
- echo "<br>";     
-  echo "<br>";  
-// Sign the request
+
 $threeDSRequest['signature'] = createSignature($threeDSRequest, $key);  
- echo "<br>";  
- print_r($threeDSRequest);
- echo "<br>";   
 
  // Initiate and set curl options to post to the gateway  
  $ch = curl_init($gatewayURL);  
@@ -42,6 +41,22 @@ $threeDSRequest['signature'] = createSignature($threeDSRequest, $key);
  curl_close($ch);  
 
  setcookie('threeDSRef', $response['threeDSRef'], time()+500);
+ 
+ 
+  print_r($_POST);
+  echo "<br>";     
+  echo "<br>";  
+  
+  print_r($threeDSRequest);
+  echo "<br>";     
+  echo "<br>";  
+  
+// Sign the request
+
+  echo "<br>";  
+  print_r($threeDSRequest);
+  echo "<br>";   
+ 
  print_r($threeDSRequest);
  print_r($response);
  // Check the response code for 3DS Authentication (65802). If 3DS authentication required
@@ -90,10 +105,6 @@ function createSignature(array $data, $key) {
   // Sort by field name  
   ksort($data);  
   
-   print_r($data);
- echo "<br>";     
-  echo "<br>";  
-
   // Create the URL encoded signature string  
   $ret = http_build_query($data, '', '&');  
 

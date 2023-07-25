@@ -1,5 +1,14 @@
 <?php	  
 
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
+
 // Merchant details and URL to this sample code.
 $key = '';
 $merchantID = '';
@@ -11,12 +20,11 @@ $gatewayURL = '{gatewayURL}/api/Transactions/payment/direct';
 
 // If this is the first request
 if (!isset($_GET['threeDSAcsResponse'])) {
-
     // Request  
     $req = array(
     'merchantID' => $merchantID,
     'action' => 'SALE',
-    'amount' => 772,
+    'amount' => 888,
     'type' => 1,
     'currencyCode' => '826',
     'orderRef' => 'CC#77777',
@@ -55,24 +63,29 @@ if (!isset($_GET['threeDSAcsResponse'])) {
     $req['signature'] = createSignature($req, $key);  
 
     // Send the request to the gateway and get back the response
-    $gatewayResponse = sendRequest($req, $gatewayURL);     
+    $gatewayResponse = sendRequest($req, $gatewayURL);
 
-    // Store the threeDSRef in a cookie for reuse.  (this is just one way of storeing it)
-    setcookie('threeDSRef', $gatewayResponse['threeDSRef'], time()+500);
+	// Check HERE!!!
+	if (headers_sent($filename, $linenum)) {
+		echo "Headers already sent in $filename on line $linenum\n";
+		exit;
+	}
 
-    // Output request
-    echo '<h2>Request</h2>';
-    echo "<pre>";
-    print_r($req);
-    echo "</pre>";
+	if (array_key_exists('form', $gatewayResponse)) {
 
-    echo http_build_query($req);
+		setcookie('threeDSRef', $gatewayResponse['threeDSRef'], time()+500, '/');
+	    echo $gatewayResponse['form'];
+		var_dump($gatewayResponse['threeDSRef']);
+	  exit;
+	} elseif (array_key_exists('successMessage', $gatewayResponse)) {
+	  echo $gatewayResponse['successMessage'];
+	  exit;
+	} elseif (array_key_exists('errorMessage', $gatewayResponse)) {
+	  echo $gatewayResponse['errorMessage'];
+	  exit;
+	}
 
-    // Output gateway response
-    echo '<h2>Response</h2>';
-    echo "<pre>";
-    print_r($gatewayResponse);
-    echo "</pre>";
+
 
 // Else if this is a response from 3DS
 }  elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['threeDSAcsResponse'])) {
@@ -98,7 +111,7 @@ if (!isset($_GET['threeDSAcsResponse'])) {
     // Output request
     echo '<h2>Request</h2>';
     echo "<pre>";
-    print_r($threeDSRequest);
+    var_dump($threeDSRequest);
     echo "</pre>";
 
     echo http_build_query($threeDSRequest);
@@ -106,12 +119,10 @@ if (!isset($_GET['threeDSAcsResponse'])) {
     // Output gateway response
     echo '<h2>Response</h2>';
     echo "<pre>";
-    print_r($gatewayResponse);
+    var_dump($gatewayResponse);
     echo "</pre>";
 
-
     //This cycle continues until the response is 0 and the transaction is complete.
-
 }
 
 /**
@@ -145,30 +156,38 @@ function sendRequest($request, $gatewayURL) {
 
     if ($response['responseCode'] == 65802) {  
 
-    // Start of HTML form with URL
-    echo "<p>Your transaction requires 3D Secure Authentication</p>  
-            <form action=\"" . htmlentities($response['threeDSURL']) . "\"method=\"post\">";
+		// Start of HTML form with URL
+		$form = "<p>Your transaction requires 3D Secure Authentication</p>  
+				<form action=\"" . htmlentities($response['threeDSURL']) . "\"method=\"post\">";
 
-    // Add threeDSRef from the gateway response
-    echo '<input type="hidden" name="threeDSRef" value="'. $response['threeDSRef'] . '">';
+		// Add threeDSRef from the gateway response
+		$form  .= '<input type="hidden" name="threeDSRef" value="'. $response['threeDSRef'] . '">';
 
-    // For each of the fields in threeDSRequest output a hidden input field with it's key/value
-    foreach($response['threeDSRequest'] as $key => $value) {
-        echo '<input type="hidden" name="'. $key .'" value="'. $value. '">';
-    }
+		// For each of the fields in threeDSRequest output a hidden input field with it's key/value
+		foreach($response['threeDSRequest'] as $key => $value) {
+			$form .= '<input type="hidden" name="'. $key .'" value="'. $value. '">';
+		}
 
-    // End of html form with submit button.
-    echo "<input type=\"submit\" value=\"Continue\">
-            </form>";            
-    
+		// End of html form with submit button.
+		$form  .= "<input type=\"submit\" value=\"Continue\">
+				</form>";            
+		
 
-    // If 3DS authentication isn't required check gateway response.      
-    } else if ($response['responseCode'] === "0") {  
-        echo "<p>Thank you for your payment.</p>";        
-        
+		// If 3DS authentication isn't required check gateway response.      
+	} else if ($response['responseCode'] === "0") {  
+		$succesMessage = "<p>Thank you for your payment.</p>";        
     } else {  
-        echo "<p>Failed to take payment: " . htmlentities($response['responseMessage']) .  "</p>";  
-    }  
+		$errorMessage = "<p>Failed to take payment: " . htmlentities($response['responseMessage']) .  "</p>";  
+	}  
+
+	if (isset($form)) {
+	  $response['form'] = $form;
+	} elseif (isset($successMessage)) {
+	  $response['succesMessage'] = $succesMessage ;
+
+	} elseif (isset($errorMessage)) {
+		$response['errorMessage'] = $errorMessage ;
+	}
 
     return $response;
 }
@@ -194,6 +213,4 @@ function createSignature(array $data, $key) {
     // Hash the signature string and the key together  
     return hash('SHA512', $ret . $key);  
 }
-
 ?> 
-

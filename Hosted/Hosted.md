@@ -40,3 +40,7 @@ Page has completed and can be used to continue the payment journey on your websi
 will be loaded using a HTTP POST request containing transaction response data allowing you to
 tailor the journey depending on the outcome of the transaction.
 
+## Files' descriptions  
+
+-  `Hosted/hosted.html` – Hosted form
+

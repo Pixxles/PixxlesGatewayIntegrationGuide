@@ -44,7 +44,7 @@ The initial request is similar to the one in the documentation, with a few diffe
 "rtCycleCount":"5", //required, denotes the number of durationUnits until the agremeent is completed; put 0 if Agreement should never end
 "rtName": "agreementName", //optional, but should be unique. Will be generated automatically if doesn't contain a value
 "rtDescription": "Order for##", //optional. Will be generated automaticly if doesn't contain a value
-"rtPolicyRef":"ORD_POL_REF12”, //optional, but should be unique. Will be generated automaticly if doesn't contain a value
+"rtPolicyRef":"ORD_POL_REF12", //optional, but should be unique. Will be generated automaticly if doesn't contain a value
 "rtStartDate":"04/18/2023 06:50:13" // required
 }
 ```

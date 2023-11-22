@@ -30,6 +30,7 @@ See for reference:
 [Sample Signature Calculation](https://github.com/Pixxles/PixxlesGatewayIntegrationGuide/blob/main/README.md#sample-signature-calculation)
 
 
+
 ## Redirect URL
 The redirectURL request field is used to provide the URL of a webpage on your server.
 For the Hosted Integration, the Customers browser will load this URL when the Hosted Payment

@@ -4,7 +4,7 @@ The Hosted Integration method works by redirecting the Customer to our Gatewayâ€
 redirecting the Customer back to a page on your website, letting you know the payment outcome.
 This allows you the quickest path to integrating with the Gateway.
 
-![hosted](https://github.com/Pixxles/PixxlesGatewayIntegrationGuide/assets/72015387/21159ee6-fe06-4fe3-9e38-d0427c3b0cbe)
+![hosted](https://github.com/Pixxles/PixxlesGatewayIntegrationGuide/assets/72015387/659ae332-67d3-4b9a-908c-018b2c1a5817)
 
 
 ## Hosted HTTP Requests

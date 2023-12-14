@@ -1,48 +1,46 @@
-﻿using System.Security.Cryptography;
+﻿using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace SDK
 {
     public class PixxlesBase
     {
-        public readonly string merchantID = "132779";
-        public readonly string signatureKey = "gpfu2XDYLKWvbZi";
+        public readonly string merchantID = "MERCHANT_ID_HERE";
+        public readonly string signatureKey = "SIGNATURE_KEY_HERE";
         public readonly string gatewayUrl = "https://qa-transactions.pixxlesportal.com";
         public readonly string directPath = "/api/Transactions/payment/direct";
 
-        public string CreateSignature(SortedDictionary<string, string> parameters, string key)
+        public string Sign(IDictionary<string, string> fields, string secret)
         {
-            string signature = string.Join('&',
-                parameters.Select(x => $"{Escape(x.Key)}={Escape(x.Value)}"));
+            // HttpUtility returns UPPERCASE percent encoded characeters
+            var encodedFields = fields.OrderBy(f => (
+                f.Key.Contains("[") ? f.Key.Replace("[", "0").Substring(0, f.Key.IndexOf("[")) : f.Key),
+                StringComparer.Ordinal);
+            var encodedBody = GetUrlEncodedBody(encodedFields);
 
-            signature += key;
+            encodedBody = encodedBody.Replace("%0D", "");
 
-            signature = signature.Replace("\r\n", "\n")
-                .Replace("\n\r", "\n").Replace("\r", "\n");
+            var bytes = Encoding.UTF8.GetBytes(encodedBody + secret);
 
-            signature = Sha512(signature);
+            string signature;
 
-            return signature.ToLower();
+            using (var hash = SHA512.Create())
+            {
+                var hashedInputBytes = hash.ComputeHash(bytes);
+
+                signature = BitConverter.ToString(hashedInputBytes).Replace("-", "").ToLower();
+            }
+
+            return signature;
         }
 
-        private string Escape(string str)
+        private string GetUrlEncodedBody(IEnumerable<KeyValuePair<string, string>> fields)
         {
-            return string.IsNullOrEmpty(str)
-                ? "" : Uri.EscapeDataString(str).Replace("%20", "+");
-        }
+            var rtn = string.Join("&",
+                fields.Select(f => string.Format("{0}={1}", WebUtility.UrlEncode(f.Key), WebUtility.UrlEncode(f.Value))));
 
-        private string Sha512(string input)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            using SHA512 hash = SHA512.Create();
-            byte[] hashedInputBytes = hash.ComputeHash(bytes);
-
-            // Convert to text
-            // StringBuilder Capacity is 128, because 512 bits / 8 bits in byte * 2 symbols for byte 
-            StringBuilder hashedInputStringBuilder = new(128);
-            foreach (byte b in hashedInputBytes)
-                hashedInputStringBuilder.Append(b.ToString("X2"));
-            return hashedInputStringBuilder.ToString();
+            return rtn.Replace("!", "%21").Replace("*", "%2A").Replace("(", "%28").Replace(")", "%29");
         }
     }
 }

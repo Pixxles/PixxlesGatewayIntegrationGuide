@@ -6,7 +6,7 @@ namespace SDK
     public class Pixxles : PixxlesBase
     {
         private readonly string merchantID = "MERCHANT_ID_HERE";
-        private readonly string signatureKey = "SIGNATURE_KEY_HERE";
+        private readonly string signatureKey = "MERCHANT_ID_HERE";
         private readonly string gatewayUrl = "https://qa-transactions.pixxlesportal.com";
         private readonly string directPath = "/api/Transactions/payment/direct";
 
@@ -29,7 +29,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(initialRequest), signatureKey);
+            var signature = Sign(initialRequest, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);
@@ -74,7 +74,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(acs1), signatureKey);
+            var signature = Sign(acs1, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);
@@ -118,7 +118,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(acs1), signatureKey);
+            var signature = Sign(acs1, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);

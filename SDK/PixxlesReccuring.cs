@@ -25,7 +25,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(initialRequest), signatureKey);
+            var signature = Sign(initialRequest, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);
@@ -67,7 +67,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(acs1), signatureKey);
+            var signature = Sign(acs1, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);
@@ -108,7 +108,7 @@ namespace SDK
                 request.AddParameter(key, value);
             }
 
-            var signature = CreateSignature(new SortedDictionary<string, string>(acs1), signatureKey);
+            var signature = Sign(acs1, signatureKey);
             request.AddParameter("signature", signature);
 
             var response = await _restClient.ExecuteAsync(request);

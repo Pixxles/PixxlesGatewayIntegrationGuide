@@ -98,12 +98,10 @@ Example Transaction:
                 { "cardNumber", "4929 4212 3460 0821" },
                 { "cardExpiryDate", "1213" },
             };
+	    
 **The transaction used for signature calculation must not include any 'signature' field as this will be added after signing when its value is known.**
 
 Step 1 - Sort transaction values by their field name Transaction fields must be in ascending field name order according to their numeric ASCII value.
-
-    var sortedDict = new SortedDictionary<string, string>(transaction);
-
 
 Step 2 - Create url encoded string from sorted fields Use RFC 1738 and the application/x-www-form-urlencoded media type, which implies that spaces are encoded as plus (+) signs.
 
@@ -111,39 +109,57 @@ Step 3 - Normalise all line endings in the url encoded string Convert all CR NL,
 
 Step 4 - Append your signature key to the normalised string The signature key is appended to the normalised string with no separator characters
 
-	   var request = string.Join('&',
-	       parameters.Select(x => $"{Escape(x.Key)}={Escape(x.Value)}"));
-
-	   request += key;
-
-	   request= request.Replace("\r\n", "\n")
-	       .Replace("\n\r", "\n").Replace("\r", "\n");
-
-       private string Escape(string str)
-       {
-           return string.IsNullOrEmpty(str)
-               ? "" : Uri.EscapeDataString(str).Replace("%20", "+");
-       }
-
 Step 5 - Hash the string using the SHA-512 algorithm The normalised string is hashed to a more compact value using the secure SHA-512 hashing algorithm
-
-	private string Sha512(string input)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            using SHA512 hash = SHA512.Create();
-            byte[] hashedInputBytes = hash.ComputeHash(bytes);
-            
-            StringBuilder hashedInputStringBuilder = new(128);
-            foreach (byte b in hashedInputBytes)
-                hashedInputStringBuilder.Append(b.ToString("X2"));
-            return hashedInputStringBuilder.ToString();
-        }
 
 Step 6 - Add the signature to the transaction form or post data The signature should be sent as part of the transaction in a field called 'signature'.
 
 	request += $"{signature}={hash}"
 
+Example code (C#)
 
+```cs
+ ///<summary>
+ /// Sign the given array of data.
+ /// 
+ /// This method will return the correct signature for the dictionary
+ /// </summary>
+ /// <param name="fields"> Dictionary<string, string> containing the fields to be signed. </params>
+ /// <param name="secret"> secret used to create the signature </params>
+ /// <returns>
+ /// Signature calculated from the provided fields.
+ /// </returns>
+ public string Sign(IDictionary<string, string> fields, string secret)
+ {
+     // HttpUtility returns UPPERCASE percent encoded characeters
+     var encodedFields = fields.OrderBy(f => (
+         f.Key.Contains("[") ? f.Key.Replace("[", "0").Substring(0, f.Key.IndexOf("[")) : f.Key),
+         StringComparer.Ordinal);
+     var encodedBody = GetUrlEncodedBody(encodedFields);
+
+     encodedBody = encodedBody.Replace("%0D", "");
+
+     var bytes = Encoding.UTF8.GetBytes(encodedBody + secret);
+
+     string signature;
+
+     using (var hash = SHA512.Create())
+     {
+         var hashedInputBytes = hash.ComputeHash(bytes);
+
+         signature = BitConverter.ToString(hashedInputBytes).Replace("-", "").ToLower();
+     }
+
+     return signature;
+ }
+
+ private string GetUrlEncodedBody(IEnumerable<KeyValuePair<string, string>> fields)
+ {
+     var rtn = string.Join("&",
+         fields.Select(f => string.Format("{0}={1}", WebUtility.UrlEncode(f.Key), WebUtility.UrlEncode(f.Value))));
+
+     return rtn.Replace("!", "%21").Replace("*", "%2A").Replace("(", "%28").Replace(")", "%29");
+ }
+```
 
 
 ## Files' descriptions  

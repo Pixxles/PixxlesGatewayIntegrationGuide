@@ -26,9 +26,6 @@ A request can be sent to the Pixxlex by submitting a HTTP POST request to the Ho
 The request should have a Content-Type: application/x-www-form-urlencoded HTTP header and the request should be name, value pairs URL encoded as per RFC 1738.
 
 When configured, each request will need to be ‘signed’ by providing a signature field containing a hash generated from the combination of the serialised request and this signing secret phrase. On receipt, Pixxles will then re-generate the hash and compare it with the one sent. If the two hashes are different, then the request received must not be the same as that sent and so the contents must have been tampered with and the transaction will be aborted, and an error response is returned. Pixxles will also return hash of the response message in the returned signature field, allowing you to create your own hash of the response (minus the signature field) and verify that the hashes match.
-See for reference:
-[Sample Signature Calculation](https://github.com/Pixxles/PixxlesGatewayIntegrationGuide/blob/main/README.md#sample-signature-calculation)
-
 
 
 ## Redirect URL

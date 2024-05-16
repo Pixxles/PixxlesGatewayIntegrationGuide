@@ -44,9 +44,9 @@ Example Transaction:
             {
                 { "action", "SALE" },
                 { "amount", "1000" },
-                { "currencyCode", "826" },
+                { "currencyCode", "GBP" },
                 { "customerAddress", "" },
-                { "customerCountryCode", "826" },
+                { "customerCountryCode", "GB" },
                 { "customerCounty", "" },
                 { "customerEmail", "examle@email.com" },
                 { "customerName", "" },

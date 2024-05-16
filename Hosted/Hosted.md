@@ -61,17 +61,17 @@ Example Transaction:
 	    
 **The transaction used for signature calculation must not include any 'signature' field as this will be added after signing when its value is known.**
 
-Step 1 - Sort transaction values by their field name Transaction fields must be in ascending field name order according to their numeric ASCII value.
+Step 1 - Sort transaction values by their field name. Transaction fields must be in ascending field name order according to their numeric ASCII value.
 
-Step 2 - Create url encoded string from sorted fields Use RFC 1738 and the application/x-www-form-urlencoded media type, which implies that spaces are encoded as plus (+) signs.
+Step 2 - Create url encoded string from sorted fields. Use RFC 1738 and the application/x-www-form-urlencoded media type, which implies that spaces are encoded as plus (+) signs.
 
-Step 3 - Normalise all line endings in the url encoded string Convert all CR NL, NL CR, CR character sequences to a single NL character.
+Step 3 - Normalise all line endings in the URL encoded string. Convert all CR NL, NL CR, CR character sequences to a single NL character.
 
-Step 4 - Append your signature key to the normalised string The signature key is appended to the normalised string with no separator characters
+Step 4 - Append your signature key to the normalised string. The signature key is appended to the normalised string with no separator characters.
 
-Step 5 - Hash the string using the SHA-512 algorithm The normalised string is hashed to a more compact value using the secure SHA-512 hashing algorithm
+Step 5 - Hash the string using the SHA-512 algorithm. The normalised string is hashed to a more compact value using the secure SHA-512 hashing algorithm.
 
-Step 6 - Add the signature to the transaction form or post data The signature should be sent as part of the transaction in a field called 'signature'.
+Step 6 - Add the signature to the transaction form or post data. The signature should be sent as part of the transaction in a field called 'signature'.
 
 	request += $"{signature}={hash}"
 

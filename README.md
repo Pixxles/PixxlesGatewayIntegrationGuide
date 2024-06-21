@@ -164,9 +164,9 @@ Example code (C#)
 
 ## Files' descriptions  
 
--  `Direct/InitialRequest.json` – Initial Request
+-  `Direct/InitialRequest.md` – Initial Request
 
--  `Direct/InitialResponse.json` – Initial Response
+-  `Direct/InitialResponse.md` – Initial Response
 
 -  `Direct/3DS-initial.php` – Initial request
 

@@ -5,48 +5,49 @@ In order to create an RT agreement where recurring scheduling is controlled by t
 The initial request is similar to the one in the documentation, with a few differences: "action" should always be "VERIFY", "amount" should always be "0", and "rt*" type of fields need to be passed. Below is an example of an initial request that creates an RT agreement.
 
 ### Request Example
-```json
-{
-"action": "VERIFY",  //should be always VERIFY
-"amount": "0", // should be always 0
-"cardCVV": "356",
-"cardExpiryMonth": "12",
-"cardExpiryYear": "24",
-"cardNumber": "4929 4212 3460 0821",
-"currencyCode": "GBP",
-"customerAddress": "Flat 6 Primrose Rise 347 Lavender Road Northampton GB",
-"customerCountryCode": "GB",
-"customerEmail": "test@test.com",
-"customerName": "John Smith",
-"customerPhone": "442081264154",
-"customerPostcode": "NN17 8YG",
-"customerTown": "Northampton",
-"deviceAcceptCharset": "",
-"deviceAcceptContent":
-"text/html:application/xhtml+xml:application/xml;q=0.9:image/avif:image/webp:image/apng:*/*;q=0.8:application/signed-exchange;v=b3;q=0.9",
-"deviceAcceptEncoding": "gzip: deflate: br",
-"deviceAcceptLanguage": "en-US",
-"deviceCapabilities": "javascript",
-"deviceChannel": "browser",
-"deviceIdentity": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML: like Gecko) Chrome/95.0.4638.54 Safari/537.36",
-"deviceScreenResolution": "1920x1080x24",
-"deviceTimeZone": "-120",
-"merchantID": "100001",
-"orderRef": "43",
-"remoteAddress": "192.168.1.1",
-"threeDSRedirectURL": "https://localhost/acs",
-"transactionUnique": "Guid.NewGuid().ToString()",
-"type": "1",
-"rtCycleAmount":"200", // required, repeated transaction amount, the last two digits are always decimal places, so in this example it is 2.00
-"rtAgreementType":"recurring", // required, should be always recurring
-"rtCycleDuration":"1", // required, number of duration units
-"rtCycleDurationUnit":"day", // required, accepted values: day, week, month, year
-"rtCycleCount":"5", //required, denotes the number of durationUnits until the agremeent is completed; put 0 if Agreement should never end
-"rtName": "agreementName", //optional, but should be unique. Will be generated automatically if doesn't contain a value
-"rtDescription": "Order for##", //optional. Will be generated automaticly if doesn't contain a value
-"rtPolicyRef":"ORD_POL_REF12", //optional, but should be unique. Will be generated automaticly if doesn't contain a value
-"rtStartDate":"04/18/2023 06:50:13" // required
-}
+
+content-type: x-www-form-urlencoded
+
+```
+action:VERIFY  //should be always VERIFY
+amount:0 // should be always 0
+cardCVV:356
+cardExpiryMonth:12
+cardExpiryYear:24
+cardNumber:4929421234600821
+currencyCode:GBP
+customerAddress:Flat 6 Primrose Rise 347 Lavender Road Northampton GB
+customerCountryCode:GB
+customerEmail:test@test.com
+customerName:John Smith
+customerPhone:442081264154
+customerPostcode: NN17 8YG
+customerTown:Northampton
+deviceAcceptCharset:
+deviceAcceptContent:
+text/html:application/xhtml+xml:application/xml;q=0.9:image/avif:image/webp:image/apng:*/*;q=0.8:application/signed-exchange;v=b3;q=0.9
+deviceAcceptEncoding:gzip: deflate: br
+deviceAcceptLanguage:en-US
+deviceCapabilities:javascript
+deviceChannel:browser
+deviceIdentity:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML: like Gecko) Chrome/95.0.4638.54 Safari/537.36
+deviceScreenResolution:1920x1080x24
+deviceTimeZone:-120
+merchantID:100001
+orderRef:43
+remoteAddress:192.168.1.1
+threeDSRedirectURL:https://localhost/acs
+transactionUnique:Guid.NewGuid().ToString()
+type:1
+rtCycleAmount:200 // required, repeated transaction amount, the last two digits are always decimal places, so in this example it is 2.00
+rtAgreementType:recurring // required, should be always recurring
+rtCycleDuration:1 // required, number of duration units
+rtCycleDurationUnit:day // required, accepted values: day, week, month, year
+rtCycleCount:5 //required, denotes the number of durationUnits until the agremeent is completed; put 0 if Agreement should never end
+rtName:agreementName //optional, but should be unique. Will be generated automatically if doesn't contain a value
+rtDescription:Order for## //optional. Will be generated automaticly if doesn't contain a value
+rtPolicyRef:ORD_POL_REF12 //optional, but should be unique. Will be generated automaticly if doesn't contain a value
+rtStartDate:04/18/2023 06:50:13 // required
 ```
 
 In the example above, GBP 2.00 will be debited every 1 day for 5 days., starting on 04/18/2023 06:50:13
@@ -60,17 +61,18 @@ When the time for the next recurring transaction comes, a simplified request nee
 
 ![Untitled Diagram](https://user-images.githubusercontent.com/72015387/235152276-3e021cd1-4dbd-4144-899b-75cf6d64b064.jpg)
 
-```json
-{
-	"merchantID": "{merchantID}",
-	"xref": "{xref}",
-	"amount": "{amount}",
-	"action": "SALE",
-	"type": "9",
-	"rtAgreementType": "recurring",
-	"avscv2CheckRequired": "N",
-	"signature": "{signature}"
-}
+content-type: x-www-form-urlencoded
+
+```
+merchantID:{merchantID}
+xref:{xref}
+amount:{amount}
+action:SALE
+type:9
+rtAgreementType:recurring
+avscv2CheckRequired:N
+signature:{signature}
+
 ```
 Note that in this example type is 9 which tells the gateway that this is a recurring transaction.
 

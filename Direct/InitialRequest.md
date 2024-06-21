@@ -1,3 +1,6 @@
+content-type: x-www-form-urlencoded
+
+```
 action:SALE
 amount:2294
 cardCVV:356
@@ -27,4 +30,4 @@ remoteAddress: 192.168.1.1
 threeDSRedirectURL: http://localhost/acs
 transactionUnique:Guid.NewGuid().ToString()
 type: 1
-
+```

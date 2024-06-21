@@ -1,3 +1,6 @@
+content-type: x-www-form-urlencoded
+
+```
 __wafRequestID: 2022-11-07T23:20:13Z|7d2f9fe709|185.16.138.249|ylF2PEWNTB
 action: SALE
 addressCheckPref: matched

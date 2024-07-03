@@ -1,6 +1,6 @@
 # Integration Testing
 
-You will be provided with unique test Merchant Account IDs during the onboarding process. Refer to Prerequisites section for more information.
+You will be provided with test Merchant Account ID during the onboarding process.
 
 Test Merchant Accounts are connected to our Simulator and not to an actual Acquirer. The Simulator will emulate the function of an Acquirer and provide simulated responses and authorisation codes.
 
@@ -86,7 +86,7 @@ Unless stated otherwise an expiry date sometime in the near future should be use
 [2] Diners Club do not support the Address Verification Service (AVS). For testing purposes, we advise that a separate Merchant Account is used with AVS is turned off.
 
 ## 3-D Secure Testing
-Your test accounts are connected to our 3-D Secure Product Integration Testing (PIT) system rather than to the production 3-D Secure servers.
+Your test account is connected to our 3-D Secure Product Integration Testing (PIT) system rather than to the production 3-D Secure servers.
 
 You can use any of the [test cards](#test-cards) with this PIT system, and the authentication status returned by the Directory Server (for frictionless flow simulation) can be selected using the value of the card expiry month as follows:
 

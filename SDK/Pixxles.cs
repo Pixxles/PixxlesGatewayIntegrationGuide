@@ -144,7 +144,7 @@ namespace SDK
                 { "currencyCode", "GBP" },
                 { "customerAddress", "Flat 6 Primrose Rise 347 Lavender Road Northampton United Kingdom" },
                 { "customerCountryCode", "GB" },
-                { "customerEmail", "test@test.ru" },
+                { "customerEmail", "test@test.com" },
                 { "customerName", "John Smith" },
                 { "customerPhone", "1234567890" },
                 { "customerPostcode", "NN17 8YG" },

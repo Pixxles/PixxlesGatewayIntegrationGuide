@@ -1,6 +1,6 @@
 # Integration Testing
 
-You will be provided with test Merchant Account ID during the onboarding process.
+You will be provided with the test Merchant Account ID during the onboarding process.
 
 Test Merchant Accounts are connected to our Simulator and not to an actual Acquirer. The Simulator will emulate the function of an Acquirer and provide simulated responses and authorisation codes.
 
